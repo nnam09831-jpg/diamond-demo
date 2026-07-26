@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản trị Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">⚙️ ADMIN DEMO</div>
+  <a href="index.html" class="admin-btn">Trang nạp</a>
+</header>
+
+<main class="container">
+
+  <div class="card">
+    <h1>📊 Quản lý đơn hàng demo</h1>
+    <p>Dữ liệu được lưu trên trình duyệt bằng LocalStorage.</p>
+  </div>
+
+  <div id="orders"></div>
+
+  <button onclick="clearOrders()">
+    🗑 Xóa toàn bộ đơn demo
+  </button>
+
+</main>
+
+<script>
+
+function loadOrders() {
+
+  const orders = JSON.parse(
+    localStorage.getItem("demoOrders") || "[]"
+  );
+
+  const box = document.getElementById("orders");
+
+  if (orders.length === 0) {
+
+    box.innerHTML = `
+      <div class="card">
+        <h2>📭 Chưa có đơn hàng</h2>
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML = orders.map((order, index) => `
+
+    <div class="card">
+
+      <h3>Đơn #${index + 1}</h3>
+
+      <p><b>UID:</b> ${order.uid}</p>
+
+      <p><b>Tên:</b> ${order.name}</p>
+
+      <p><b>Gói:</b> ${order.diamond} KC</p>
+
+      <p>
+        <b>Giá:</b>
+        ${Number(order.price).toLocaleString("vi-VN")}đ
+      </p>
+
+      <p><b>Thanh toán:</b> ${order.payment}</p>
+
+      <p><b>Thời gian:</b> ${order.time}</p>
+
+      <select onchange="updateStatus(${index}, this.value)">
+
+        <option ${order.status === "Chờ xử lý" ? "selected" : ""}>
+          Chờ xử lý
+        </option>
+
+        <option ${order.status === "Đang xử lý" ? "selected" : ""}>
+          Đang xử lý
+        </option>
+
+        <option ${order.status === "Hoàn thành demo" ? "selected" : ""}>
+          Hoàn thành demo
+        </option>
+
+        <option ${order.status === "Đã hủy" ? "selected" : ""}>
+          Đã hủy
+        </option>
+
+      </select>
+
+    </div>
+
+  `).join("");
+
+}
+
+function updateStatus(index, status) {
+
+  const orders = JSON.parse(
+    localStorage.getItem("demoOrders") || "[]"
+  );
+
+  orders[index].status = status;
+
+  localStorage.setItem(
+    "demoOrders",
+    JSON.stringify(orders)
+  );
+
+  loadOrders();
+
+}
+
+function clearOrders() {
+
+  if (confirm("Bạn có chắc muốn xóa toàn bộ đơn demo?")) {
+
+    localStorage.removeItem("demoOrders");
+
+    loadOrders();
+
+  }
+
+}
+
+loadOrders();
+
+</script>
+
+</body>
+  </html>
