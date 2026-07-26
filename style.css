@@ -296,3 +296,25 @@ select {
   }
 
   }
+/* QR THANH TOÁN */
+.qr-payment {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+}
+
+.qr-payment h3 {
+    margin-bottom: 15px;
+}
+
+.qr-image {
+    width: 250px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.qr-payment p {
+    margin-top: 12px;
+  }
