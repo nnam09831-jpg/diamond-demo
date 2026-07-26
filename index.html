@@ -43,13 +43,21 @@
   <main>
 
     <section class="banner">
+
       <div>
         <h1>NẠP <span>KIM CƯƠNG</span></h1>
-        <h2>NHANH CHÓNG - AN TOÀN - TIỆN LỢI</h2>
-        <button onclick="scrollToTopup()">NẠP NGAY ❯</button>
+
+        <h2>
+          NHANH CHÓNG - AN TOÀN - TIỆN LỢI
+        </h2>
+
+        <button onclick="scrollToTopup()">
+          NẠP NGAY ❯
+        </button>
       </div>
 
       <div class="banner-icon">💎</div>
+
     </section>
 
     <section class="content">
@@ -69,60 +77,80 @@
           <input
             id="uid"
             type="text"
-        <!-- QR THANH TOÁN -->
-<div class="qr-payment">
-    <h3>Quét mã QR để thanh toán</h3>
-
-    <img src="qr-ngan-hang.jpg"
-         alt="QR nhận tiền"
-         class="qr-image">
-
-    <p>Vui lòng quét mã QR để chuyển khoản</p>
-</div>    placeholder="Nhập ID game của bạn"
+            placeholder="Nhập ID game của bạn"
           >
+
+          <!-- QR THANH TOÁN -->
+          <div class="qr-payment">
+
+            <h3>QUÉT QR ĐỂ THANH TOÁN</h3>
+
+            <img
+              src="qr-ngan-hang.jpg"
+              alt="QR thanh toán"
+              class="qr-image"
+            >
+
+            <p>
+              Vui lòng quét mã QR để chuyển khoản
+            </p>
+
+          </div>
 
           <h2>3. CHỌN GÓI KIM CƯƠNG</h2>
 
           <div class="packages">
 
-            <div class="package selected"
+            <div
+              class="package selected"
               data-diamond="100"
-              data-price="20000">
+              data-price="20000"
+            >
               💎 <b>100</b>
               <strong>20.000đ</strong>
             </div>
 
-            <div class="package"
+            <div
+              class="package"
               data-diamond="310"
-              data-price="50000">
+              data-price="50000"
+            >
               💎 <b>310</b>
               <strong>50.000đ</strong>
             </div>
 
-            <div class="package"
+            <div
+              class="package"
               data-diamond="520"
-              data-price="80000">
+              data-price="80000"
+            >
               💎 <b>520</b>
               <strong>80.000đ</strong>
             </div>
 
-            <div class="package"
+            <div
+              class="package"
               data-diamond="1060"
-              data-price="150000">
+              data-price="150000"
+            >
               💎 <b>1.060</b>
               <strong>150.000đ</strong>
             </div>
 
-            <div class="package"
+            <div
+              class="package"
               data-diamond="2180"
-              data-price="300000">
+              data-price="300000"
+            >
               💎 <b>2.180</b>
               <strong>300.000đ</strong>
             </div>
 
-            <div class="package"
+            <div
+              class="package"
               data-diamond="5600"
-              data-price="700000">
+              data-price="700000"
+            >
               💎 <b>5.600</b>
               <strong>700.000đ</strong>
             </div>
@@ -130,8 +158,13 @@
           </div>
 
           <div class="safe">
+
             🛡️ <b>AN TOÀN & BẢO MẬT</b>
-            <small>Đây là website demo, không xử lý thanh toán thật.</small>
+
+            <small>
+              Đây là website demo, không xử lý thanh toán thật.
+            </small>
+
           </div>
 
         </div>
@@ -144,24 +177,60 @@
 
           <h2>THÔNG TIN NẠP</h2>
 
-          <p>ID Game <span id="showUid">---</span></p>
-          <p>Game <span>Free Fire</span></p>
-          <p>Kim cương <span id="showDiamond">💎 100</span></p>
-          <p>Giá <span id="showPrice">20.000đ</span></p>
+          <p>
+            ID Game
+            <span id="showUid">---</span>
+          </p>
 
-          <h2>4. PHƯƠNG THỨC THANH TOÁN</h2>
+          <p>
+            Game
+            <span>Free Fire</span>
+          </p>
+
+          <p>
+            Kim cương
+            <span id="showDiamond">
+              💎 100
+            </span>
+          </p>
+
+          <p>
+            Giá
+            <span id="showPrice">
+              20.000đ
+            </span>
+          </p>
+
+          <h2>
+            4. PHƯƠNG THỨC THANH TOÁN
+          </h2>
 
           <select id="payment">
-            <option>Ví điện tử</option>
-            <option>Thẻ ngân hàng</option>
-            <option>Chuyển khoản</option>
+
+            <option>
+              Ví điện tử
+            </option>
+
+            <option>
+              Thẻ ngân hàng
+            </option>
+
+            <option>
+              Chuyển khoản
+            </option>
+
           </select>
 
-          <button class="topup" onclick="createOrder()">
+          <button
+            class="topup"
+            onclick="createOrder()"
+          >
             NẠP NGAY
           </button>
 
-          <small>🔒 Đây là bản demo, không thanh toán thật</small>
+          <small>
+            🔒 Đây là bản demo, không thanh toán thật
+          </small>
 
         </div>
 
@@ -176,4 +245,4 @@
 <script src="script.js"></script>
 
 </body>
-  </html>
+      </html>
