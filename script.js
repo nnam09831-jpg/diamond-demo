@@ -1,81 +1,88 @@
-let selectedPackage = null;
+let selectedDiamond = 100;
+let selectedPrice = 20000;
 
 const packages = document.querySelectorAll(".package");
 
 packages.forEach(pkg => {
+
   pkg.addEventListener("click", () => {
-    packages.forEach(p => p.classList.remove("active"));
 
-    pkg.classList.add("active");
+    packages.forEach(p => {
+      p.classList.remove("selected");
+    });
 
-    selectedPackage = {
-      diamond: pkg.dataset.diamond,
-      price: pkg.dataset.price
-    };
+    pkg.classList.add("selected");
+
+    selectedDiamond = pkg.dataset.diamond;
+    selectedPrice = pkg.dataset.price;
+
+    document.getElementById("showDiamond").innerText =
+      "💎 " + Number(selectedDiamond).toLocaleString("vi-VN");
+
+    document.getElementById("showPrice").innerText =
+      Number(selectedPrice).toLocaleString("vi-VN") + "đ";
+
   });
+
+});
+
+document.getElementById("uid").addEventListener("input", function() {
+
+  document.getElementById("showUid").innerText =
+    this.value || "---";
+
 });
 
 function createOrder() {
+
   const uid = document.getElementById("uid").value.trim();
-  const name = document.getElementById("playerName").value.trim();
-  const payment = document.getElementById("payment").value;
-  const result = document.getElementById("result");
 
-  if (!uid || !name) {
-    result.innerHTML = `
-      <div class="notice">
-        ⚠️ Vui lòng nhập UID và tên người chơi.
-      </div>
-    `;
+  if (!uid) {
+    alert("Vui lòng nhập ID game!");
     return;
   }
 
-  if (!selectedPackage) {
-    result.innerHTML = `
-      <div class="notice">
-        ⚠️ Vui lòng chọn gói kim cương.
-      </div>
-    `;
-    return;
-  }
+  const payment =
+    document.getElementById("payment").value;
 
-  if (!payment) {
-    result.innerHTML = `
-      <div class="notice">
-        ⚠️ Vui lòng chọn phương thức thanh toán.
-      </div>
-    `;
-    return;
-  }
+  const orders =
+    JSON.parse(localStorage.getItem("demoOrders") || "[]");
 
-  const order = {
+  orders.push({
+
     uid: uid,
-    name: name,
-    diamond: selectedPackage.diamond,
-    price: selectedPackage.price,
+
+    diamond: selectedDiamond,
+
+    price: selectedPrice,
+
     payment: payment,
+
     status: "Chờ xử lý",
+
     time: new Date().toLocaleString("vi-VN")
-  };
 
-  const orders = JSON.parse(
-    localStorage.getItem("demoOrders") || "[]"
-  );
-
-  orders.push(order);
+  });
 
   localStorage.setItem(
     "demoOrders",
     JSON.stringify(orders)
   );
 
-  result.innerHTML = `
-    <div class="success">
-      <h3>✅ Tạo đơn demo thành công!</h3>
-      <p>UID: ${uid}</p>
-      <p>Gói: ${selectedPackage.diamond} KC</p>
-      <p>Giá: ${Number(selectedPackage.price).toLocaleString("vi-VN")}đ</p>
-      <p>Trạng thái: Chờ xử lý</p>
-    </div>
-  `;
+  alert(
+    "Đã tạo đơn demo thành công!\n\n" +
+    "UID: " + uid + "\n" +
+    "Kim cương: " + selectedDiamond
+  );
+
 }
+
+function scrollToTopup() {
+
+  document
+    .querySelector(".content")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+                                                    }
