@@ -3,63 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diamond Store - Demo</title>
+  <title>Diamond Topup Demo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <div class="logo">💎 DIAMOND STORE</div>
-  <a href="admin.html" class="admin-btn">Quản trị demo</a>
+  <div class="logo">💎 DIAMOND<span>TOPUP</span></div>
+
+  <nav>
+    <a>Trang chủ</a>
+    <a class="active">Nạp game</a>
+    <a>Hỗ trợ</a>
+    <a>Tài khoản</a>
+  </nav>
+
+  <button class="login">Đăng nhập</button>
 </header>
 
-<section class="hero">
-  <span class="badge">WEBSITE DEMO</span>
+<div class="layout">
 
-  <h1>
-    NẠP KIM CƯƠNG<br>
-    <span>NHANH CHÓNG</span>
-  </h1>
+  <aside>
 
-  <p>
-    Giao diện mô phỏng nạp kim cương.
-    Không xử lý giao dịch thật.
-  </p>
-</section>
+    <div class="menu active">💎 Nạp kim cương</div>
+    <div class="menu">🎫 Nạp thẻ game</div>
+    <div class="menu">📊 Lịch sử giao dịch</div>
+    <div class="menu">❔ Hỗ trợ</div>
+    <div class="menu">📄 Điều khoản</div>
 
-<main class="container">
+    <div class="promo">
+      <h2>ƯU ĐÃI</h2>
+      <h3>NẠP GAME</h3>
+      <button>XEM NGAY</button>
+    </div>
 
-  <div class="card">
-    <h2>🎮 Thông tin người chơi</h2>
+  </aside>
 
-    <label>UID người chơi</label>
-    <input id="uid" type="text" placeholder="Nhập UID Free Fire">
+  <main>
 
-    <label>Tên người chơi</label>
-    <input id="playerName" type="text" placeholder="Nhập tên người chơi">
-  </div>
-
-  <div class="card">
-    <h2>💎 Chọn gói kim cương</h2>
-
-    <div class="packages">
-
-      <div class="package" data-diamond="100" data-price="20000">
-        <b>💎 100 KC</b>
-        <span>20.000đ</span>
+    <section class="banner">
+      <div>
+        <h1>NẠP <span>KIM CƯƠNG</span></h1>
+        <h2>NHANH CHÓNG - AN TOÀN - TIỆN LỢI</h2>
+        <button onclick="scrollToTopup()">NẠP NGAY ❯</button>
       </div>
 
-      <div class="package" data-diamond="310" data-price="50000">
-        <b>💎 310 KC</b>
-        <span>50.000đ</span>
+      <div class="banner-icon">💎</div>
+    </section>
+
+    <section class="content">
+
+      <div class="left">
+
+        <div class="card">
+
+          <h2>1. CHỌN GAME</h2>
+
+          <div class="game-select">
+            🔥 Free Fire
+          </div>
+
+          <h2>2. NHẬP ID GAME</h2>
+
+          <input
+            id="uid"
+            type="text"
+            placeholder="Nhập ID game của bạn"
+          >
+
+          <h2>3. CHỌN GÓI KIM CƯƠNG</h2>
+
+          <div class="packages">
+
+            <div class="package selected"
+              data-diamond="100"
+              data-price="20000">
+              💎 <b>100</b>
+              <strong>20.000đ</strong>
+            </div>
+
+            <div class="package"
+              data-diamond="310"
+              data-price="50000">
+              💎 <b>310</b>
+              <strong>50.000đ</strong>
+            </div>
+
+            <div class="package"
+              data-diamond="520"
+              data-price="80000">
+              💎 <b>520</b>
+              <strong>80.000đ</strong>
+            </div>
+
+            <div class="package"
+              data-diamond="1060"
+              data-price="150000">
+              💎 <b>1.060</b>
+              <strong>150.000đ</strong>
+            </div>
+
+            <div class="package"
+              data-diamond="2180"
+              data-price="300000">
+              💎 <b>2.180</b>
+              <strong>300.000đ</strong>
+            </div>
+
+            <div class="package"
+              data-diamond="5600"
+              data-price="700000">
+              💎 <b>5.600</b>
+              <strong>700.000đ</strong>
+            </div>
+
+          </div>
+
+          <div class="safe">
+            🛡️ <b>AN TOÀN & BẢO MẬT</b>
+            <small>Đây là website demo, không xử lý thanh toán thật.</small>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="package" data-diamond="520" data-price="80000">
-        <b>💎 520 KC</b>
-        <span>80.000đ</span>
+      <div class="right">
+
+        <div class="card summary">
+
+          <h2>THÔNG TIN NẠP</h2>
+
+          <p>ID Game <span id="showUid">---</span></p>
+          <p>Game <span>Free Fire</span></p>
+          <p>Kim cương <span id="showDiamond">💎 100</span></p>
+          <p>Giá <span id="showPrice">20.000đ</span></p>
+
+          <h2>4. PHƯƠNG THỨC THANH TOÁN</h2>
+
+          <select id="payment">
+            <option>Ví điện tử</option>
+            <option>Thẻ ngân hàng</option>
+            <option>Chuyển khoản</option>
+          </select>
+
+          <button class="topup" onclick="createOrder()">
+            NẠP NGAY
+          </button>
+
+          <small>🔒 Đây là bản demo, không thanh toán thật</small>
+
+        </div>
+
       </div>
 
-      <div class="package" data-diamond="1060" data-price="150000">
-        <b>💎 1.060 KC</b>
-        <span>150.
+    </section>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
